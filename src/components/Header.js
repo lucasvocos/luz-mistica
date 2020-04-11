@@ -19,21 +19,20 @@ const HeaderWrapper = styled.header`
   }
 `;
 
-const Header = ({ infoPage }) => {
-  // run graphql queries, setState, useContext, etc.
+const Header = ({ home }) => {
   return (
     <HeaderWrapper>
-      {infoPage ? (
+      {home ? (
+        <React.Fragment>
+          <h1>Luz Mística // Mystical Light</h1>
+          <Link to={"/information"}>Information</Link>
+        </React.Fragment>
+      ) : (
         <React.Fragment>
           <Link to={"/"}>
             <h1>Luz Mística // Mystical Light</h1>
           </Link>
           <p>Information</p>
-        </React.Fragment>
-      ) : (
-        <React.Fragment>
-          <h1>Luz Mística // Mystical Light</h1>
-          <Link to={"/information"}>Information</Link>
         </React.Fragment>
       )}
     </HeaderWrapper>

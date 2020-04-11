@@ -8,6 +8,15 @@ const FooterWrapper = styled.footer`
   bottom: 20px;
   right: 20px;
 
+  .color-info {
+    width: 50%;
+
+    @media (min-width: 1024px) {
+      max-width: 55ch;
+      width: 100%;
+    }
+  }
+
   h2 {
     text-transform: uppercase;
     margin-bottom: 20px;
@@ -53,7 +62,11 @@ const Footer = ({ color }) => {
   return (
     <FooterWrapper>
       {color.title && <h2>{color.title}</h2>}
-      {color.body && <BlockContent blocks={color.body} />}
+      {color.body && (
+        <div className="color-info">
+          <BlockContent blocks={color.body} />
+        </div>
+      )}
 
       {fullScreen ? (
         <FullScreenButton onClick={() => exitFullScreen()}>

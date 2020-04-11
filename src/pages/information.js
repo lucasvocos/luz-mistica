@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import SEO from "../components/seo";
 import styled from "styled-components";
 import Layout from "../components/Layout";
-import Header from "../components/Header";
+import BlockContent from "@sanity/block-content-to-react";
 
 const InfoWrapper = styled.section`
   display: flex;
@@ -45,60 +45,75 @@ const InfoColumn = styled.aside`
 `;
 
 const Information = () => {
+  const data = useStaticQuery(graphql`
+    {
+      allSanitySiteSettings {
+        nodes {
+          _rawInformation
+        }
+      }
+    }
+  `);
+
   return (
-    <>
-      <SEO title="// INFORMATION" description="" />
-      <Header infoPage={true} />
-      <Layout>
-        <InfoWrapper>
-          <InfoColumn>
-            <h2>Luz Mística is a light + color therapy application.</h2>
-          </InfoColumn>
-          <InfoColumn>
-            <p>
-              Designed & Developed by{" "}
+    <Layout home={false}>
+      <SEO
+        title="// INFORMATION"
+        description="Luz Mística is a color + light therapy application. Turn the lights off, increase the screen brightness, and bathe in color. Designed & Developed by Lucas Vocos"
+      />
+      <InfoWrapper>
+        <InfoColumn>
+          <h2>Luz Mística is a light + color therapy application.</h2>
+          {data.allSanitySiteSettings.nodes[0]._rawInformation && (
+            <BlockContent
+              blocks={data.allSanitySiteSettings.nodes[0]._rawInformation}
+            />
+          )}
+        </InfoColumn>
+        <InfoColumn>
+          <p>
+            Designed & Developed by{" "}
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.lucasvocos.com"
+            >
+              Lucas Vocos
+            </a>
+          </p>
+          <ul>
+            <p>Contact</p>
+            <li>
               <a
                 target="_blank"
                 rel="noopener noreferrer"
-                href="https://www.lucasvocos.com"
+                href="mailto:info@lucasvocos.com"
               >
-                Lucas Vocos
+                info@lucasvocos.com
               </a>
-            </p>
-            <ul>
-              <p>Contact</p>
-              <li>
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="mailto:info@lucasvocos.com"
-                >
-                  info@lucasvocos.com
-                </a>
-              </li>
-              <li>
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://www.github.com/lucasvocos"
-                >
-                  Github
-                </a>
-              </li>
-              <li>
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://www.instagram.com/lucasvocos"
-                >
-                  Instagram
-                </a>
-              </li>
-            </ul>
-          </InfoColumn>
-        </InfoWrapper>
-      </Layout>
-    </>
+            </li>
+            <li>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.github.com/lucasvocos"
+              >
+                Github
+              </a>
+            </li>
+            <li>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.instagram.com/lucasvocos"
+              >
+                Instagram
+              </a>
+            </li>
+          </ul>
+        </InfoColumn>
+      </InfoWrapper>
+    </Layout>
   );
 };
 
