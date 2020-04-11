@@ -1,0 +1,65 @@
+@font-face {
+  font-family: "SuisseIntlBook ";
+  src: url(" ./font/SuisseIntl-Book.eot");
+  src: url("./font/SuisseIntl-Book.eot?#iefix ") format("embedded-opentype"),
+    url(" ./font/SuisseIntl-Book.woff2 ") format("woff2 "),
+    url(" ./font/SuisseIntl-Book.woff ") format(" woff "),
+    url(" ./font/SuisseIntl-Book.svg#SuisseIntl-Book ") format("svg");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SuisseIntlRegular";
+  src: url("./font/SuisseIntl-Regular.eot");
+  src: url("./font/SuisseIntl-Regular.eot?#iefix") format("embedded-opentype"),
+    url("./font/SuisseIntl-Regular.woff2") format("woff2"),
+    url("./font/SuisseIntl-Regular.woff") format("woff"),
+    url("./font/SuisseIntl-Regular.svg#SuisseIntl-Regular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  font-family: "SuisseIntlBook", "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 13px;
+
+  @media (min-width: 1600px) {
+    font-size: 18px;
+  }
+}
+/* Chrome, Safari and Opera syntax */
+:-webkit-full-screen {
+  header {
+    a {
+      display: none;
+    }
+  }
+}
+
+/* Firefox syntax */
+:-moz-full-screen {
+  header {
+    a {
+      display: none;
+    }
+  }
+}
+
+/* IE/Edge syntax */
+:-ms-fullscreen {
+  header {
+    a {
+      display: none;
+    }
+  }
+}
+
+/* Standard syntax */
+:fullscreen {
+  header {
+    a {
+      display: none;
+    }
+  }
+}
