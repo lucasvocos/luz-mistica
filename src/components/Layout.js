@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -57,58 +57,46 @@ const Wrapper = props => {
 
   const context = useContext(Context);
 
-  const [colors] = useState(data.allSanitySiteSettings.nodes[0].colorOrder);
-  const [interval] = useState(false);
-  const [currentColor, setCurrentColor] = useState(
-    data.allSanitySiteSettings.nodes[0].colorOrder[0]
-  );
-
-  const colorInterval = () => {
-    let index = colors.indexOf(currentColor);
-
-    if (index === colors.length - 1) {
-      index = 0;
-    }
-
-    setCurrentColor(colors[index + 1]);
-  };
-
   const nextColor = () => {
-    let currentIndex = colors.indexOf(currentColor);
+    let currentIndex = context.colors.indexOf(context.currentColor);
 
-    if (currentIndex + 1 > colors.length - 1) {
+    if (currentIndex + 1 > context.colors.length - 1) {
       currentIndex = -1;
     }
 
-    setCurrentColor(colors[currentIndex + 1]);
+    context.setCurrentColor(currentIndex + 1);
   };
 
   const prevColor = () => {
-    let index = colors.indexOf(currentColor);
+    let index = context.colors.indexOf(context.currentColor);
 
     if (index - 1 < 0) {
-      index = colors.length;
+      index = context.colors.length;
     }
 
-    setCurrentColor(colors[index - 1]);
+    context.setCurrentColor(index - 1);
+  };
+
+  const colorInterval = () => {
+    setInterval(nextColor);
   };
 
   useEffect(() => {
-    // if (data) {
-    //   context.initSetState(
-    //     data.allSanitySiteSettings.nodes[0].colorOrder,
-    //     data.allSanitySiteSettings.nodes[0].colorOrder[0]
-    //   );
-    // }
-    if (interval) {
-      setInterval(colorInterval, 5000);
+    if (context.colors.length === 0) {
+      context.initSetState(
+        data.allSanitySiteSettings.nodes[0].colorOrder,
+        data.allSanitySiteSettings.nodes[0].colorOrder[0]
+      );
+    }
+    if (context.interval) {
+      setInterval(nextColor, 5000);
     } else {
       clearInterval(colorInterval);
     }
-  }, [currentColor]);
+  }, []);
 
   return (
-    <LayoutStyle color={currentColor.code} id={"color"}>
+    <LayoutStyle color={context.currentColor.code} id={"color"}>
       <Header home={props.home} />
       {props.children}
       {props.home && (
@@ -117,7 +105,10 @@ const Wrapper = props => {
           <RightButton onClick={nextColor}>Next </RightButton>
 
           <Footer
-            color={{ title: currentColor.title, body: currentColor._rawBody }}
+            color={{
+              title: context.currentColor.title,
+              body: context.currentColor._rawBody
+            }}
           />
         </>
       )}

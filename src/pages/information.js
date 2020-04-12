@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import SEO from "../components/seo";
 import styled from "styled-components";

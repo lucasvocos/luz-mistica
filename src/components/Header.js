@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "gatsby";
-import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 
 const HeaderWrapper = styled.header`
@@ -24,13 +23,13 @@ const Header = ({ home }) => {
     <HeaderWrapper>
       {home ? (
         <React.Fragment>
-          <h1>Luz Mística // Mystical Light</h1>
+          <h1>Luz Mística // Mystic Light</h1>
           <Link to={"/information"}>Information</Link>
         </React.Fragment>
       ) : (
         <React.Fragment>
           <Link to={"/"}>
-            <h1>Luz Mística // Mystical Light</h1>
+            <h1>Luz Mística // Mystic Light</h1>
           </Link>
           <p>Information</p>
         </React.Fragment>

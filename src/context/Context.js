@@ -1,5 +1,4 @@
 import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
 
 const ColorContext = React.createContext();
 export default ColorContext;
@@ -7,7 +6,27 @@ export default ColorContext;
 export class ColorContextProvider extends React.Component {
   state = {
     colors: [],
-    currentColor: null,
+    currentColor: {
+      title: "Violet",
+      code: "hsl(300, 76%, 72%)",
+      _rawBody: [
+        {
+          _key: "4d1c46e5f96f",
+          _type: "block",
+          children: [
+            {
+              _key: "4d1c46e5f96f0",
+              _type: "span",
+              marks: [],
+              text:
+                "Violet stimulates Intuition, Imagination, Self-Knowledge, Meditation, Artistic Qualities"
+            }
+          ],
+          markDefs: [],
+          style: "normal"
+        }
+      ]
+    },
     interval: false
   };
 

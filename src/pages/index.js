@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import SEO from "../components/seo";
 import "reset-css";
 import Layout from "../components/Layout";
-import styled from "styled-components";
-
-const HomeWrapper = styled.main``;
 
 const IndexPage = () => {
   return (
