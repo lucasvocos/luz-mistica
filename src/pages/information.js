@@ -12,8 +12,11 @@ const InfoWrapper = styled.section`
 `;
 
 const InfoColumn = styled.aside`
-  padding: 0 20px;
   width: 100%;
+  line-height: 1.25;
+  &:first-of-type {
+    padding-right: 20px;
+  }
 
   a {
     color: inherit;
