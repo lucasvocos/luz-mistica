@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SEO from "../components/seo";
 import "reset-css";
-import "../root.scss";
 import Layout from "../components/Layout";
 import styled from "styled-components";
 

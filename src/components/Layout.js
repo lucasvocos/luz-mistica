@@ -4,6 +4,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Context from "../context/Context";
 import styled from "styled-components";
+import "../root.scss";
 
 const LayoutStyle = styled.main`
   position: fixed;

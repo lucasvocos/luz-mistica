@@ -19,6 +19,11 @@ const InfoColumn = styled.aside`
     color: inherit;
   }
 
+  h2,
+  p {
+    margin-bottom: 0.5em;
+  }
+
   ul {
     margin-top: 1em;
     line-height: 1.25;
