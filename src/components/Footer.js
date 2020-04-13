@@ -49,12 +49,26 @@ const Footer = ({ color }) => {
   const enterFullScreen = () => {
     setFullScreen(true);
     const wrapper = document.getElementById("___gatsby");
-    wrapper.requestFullscreen();
+
+    if (wrapper.requestFullscreen) {
+      wrapper.requestFullscreen();
+    } else if (wrapper.webkitRequestFullScreen) {
+      wrapper.webkitRequestFullScreen();
+    } else if (wrapper.mozRequestFullScreen) {
+      wrapper.mozRequestFullScreen();
+    }
   };
 
   const exitFullScreen = () => {
     setFullScreen(false);
-    if (document.exitFullscreen) {
+
+    if (document.cancelFullScreen) {
+      document.cancelFullScreen();
+    } else if (document.webkitCancelFullScreen) {
+      document.webkitCancelFullScreen();
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if (document.exitFullscreen) {
       document.exitFullscreen();
     }
   };
