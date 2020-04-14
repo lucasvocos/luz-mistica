@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import SEO from "../components/seo";
 import styled from "styled-components";
 import Layout from "../components/Layout";
 import BlockContent from "@sanity/block-content-to-react";
+import ShareIcon from "../images/share-apple.svg";
 
 const InfoWrapper = styled.section`
   display: flex;
@@ -28,13 +29,10 @@ const InfoColumn = styled.aside`
   }
 
   ul {
-    margin-top: 1em;
     line-height: 1.25;
-
     p {
-      margin-bottom: 0.5em;
+      text-transform: uppercase;
     }
-
     a {
       text-decoration: none;
       &:hover {
@@ -52,6 +50,19 @@ const InfoColumn = styled.aside`
   }
 `;
 
+const Instructions = styled.aside`
+  h3 {
+    margin-top: 1rem;
+  }
+  img {
+    max-height: 2rem;
+    display: inline;
+    width: auto;
+    height: 1.5rem;
+    vertical-align: bottom;
+  }
+`;
+
 const Information = () => {
   const data = useStaticQuery(graphql`
     {
@@ -62,6 +73,15 @@ const Information = () => {
       }
     }
   `);
+
+  const [displayInstallation, setDisplayInstallation] = useState(false);
+
+  useEffect(() => {
+    const iOS =
+      !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+    iOS ? setDisplayInstallation(true) : setDisplayInstallation(true);
+    return () => {};
+  }, []);
 
   return (
     <Layout home={false}>
@@ -76,6 +96,15 @@ const Information = () => {
             <BlockContent
               blocks={data.allSanitySiteSettings.nodes[0]._rawInformation}
             />
+          )}
+          {displayInstallation && (
+            <Instructions>
+              <h3>INSTALLATION INSTRUCTIONS:</h3>
+              <p>
+                Tap the Share icon: <img src={ShareIcon} /> and click "Add to
+                Home Screen".
+              </p>
+            </Instructions>
           )}
         </InfoColumn>
         <InfoColumn>

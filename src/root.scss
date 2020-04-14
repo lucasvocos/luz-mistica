@@ -28,38 +28,3 @@ html {
     font-size: 16px;
   }
 }
-/* Chrome, Safari and Opera syntax */
-:-webkit-full-screen {
-  header {
-    a {
-      display: none;
-    }
-  }
-}
-
-/* Firefox syntax */
-:-moz-full-screen {
-  header {
-    a {
-      display: none;
-    }
-  }
-}
-
-/* IE/Edge syntax */
-:-ms-fullscreen {
-  header {
-    a {
-      display: none;
-    }
-  }
-}
-
-/* Standard syntax */
-:fullscreen {
-  header {
-    a {
-      display: none;
-    }
-  }
-}

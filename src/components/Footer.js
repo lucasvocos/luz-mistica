@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import BlockContent from "@sanity/block-content-to-react";
 import styled from "styled-components";
+import { Link } from "gatsby";
+import Arrow from "../images/arrow.svg";
 
 const FooterWrapper = styled.footer`
   position: fixed;
@@ -34,17 +36,31 @@ const FullScreenButton = styled.button`
   text-transform: uppercase;
   font-family: "SuisseIntlRegular", "Helvetica Neue", Helvetica, sans-serif;
   cursor: pointer;
+  border-bottom: 1px solid transparent;
 
   &:hover {
-    text-decoration: underline;
+    /* text-decoration: underline; */
+    border-bottom: 1px solid;
   }
   &:focus {
     outline: 1px solid transparent;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  img {
+    max-height: 1.5rem;
+    height: 1.5rem;
+    vertical-align: bottom;
+    width: auto;
+    display: inline;
   }
 `;
 
 const Footer = ({ color }) => {
   const [fullScreen, setFullScreen] = useState(false);
+  const [displayButton, setDisplayButton] = useState(false);
 
   const enterFullScreen = () => {
     setFullScreen(true);
@@ -73,6 +89,13 @@ const Footer = ({ color }) => {
     }
   };
 
+  useEffect(() => {
+    const iOS =
+      !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+    iOS ? setDisplayButton(false) : setDisplayButton(true);
+    return () => {};
+  }, []);
+
   return (
     <FooterWrapper>
       {color.title && <h2>{color.title}</h2>}
@@ -82,15 +105,25 @@ const Footer = ({ color }) => {
         </div>
       )}
 
-      {fullScreen ? (
-        <FullScreenButton onClick={() => exitFullScreen()}>
-          {" "}
-          Exit Full Screen{" "}
-        </FullScreenButton>
+      {displayButton ? (
+        <React.Fragment>
+          {fullScreen ? (
+            <FullScreenButton onClick={() => exitFullScreen()}>
+              {" "}
+              Exit Full Screen{" "}
+            </FullScreenButton>
+          ) : (
+            <FullScreenButton onClick={() => enterFullScreen()}>
+              {" "}
+              Enter Full Screen{" "}
+            </FullScreenButton>
+          )}
+        </React.Fragment>
       ) : (
-        <FullScreenButton onClick={() => enterFullScreen()}>
-          {" "}
-          Enter Full Screen{" "}
+        <FullScreenButton>
+          <Link to={"/information"}>
+            INSTALL <img src={Arrow} />
+          </Link>
         </FullScreenButton>
       )}
     </FooterWrapper>

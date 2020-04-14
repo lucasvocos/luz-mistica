@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -14,7 +14,7 @@ const LayoutStyle = styled.main`
   bottom: 0;
   z-index: -1;
   transition: background-color 2.5s ease;
-  background-color: ${props => (props.color ? props.color : "")};
+  background-color: ${(props) => (props.color ? props.color : "")};
 `;
 
 const Button = styled.button`
@@ -39,7 +39,7 @@ const RightButton = styled(Button)`
   right: 20px;
 `;
 
-const Wrapper = props => {
+const Wrapper = (props) => {
   const data = useStaticQuery(graphql`
     {
       allSanitySiteSettings {
@@ -88,6 +88,7 @@ const Wrapper = props => {
         data.allSanitySiteSettings.nodes[0].colorOrder[0]
       );
     }
+
     if (context.interval) {
       setInterval(nextColor, 5000);
     } else {
@@ -107,7 +108,7 @@ const Wrapper = props => {
           <Footer
             color={{
               title: context.currentColor.title,
-              body: context.currentColor._rawBody
+              body: context.currentColor._rawBody,
             }}
           />
         </>
