@@ -26,6 +26,7 @@ const InfoColumn = styled.aside`
   h2,
   p {
     margin-bottom: 0.5em;
+    max-width: 50ch;
   }
 
   ul {
