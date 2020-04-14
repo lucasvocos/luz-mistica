@@ -79,14 +79,14 @@ const Information = () => {
   useEffect(() => {
     const iOS =
       !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
-    iOS ? setDisplayInstallation(true) : setDisplayInstallation(true);
+    iOS ? setDisplayInstallation(true) : setDisplayInstallation(false);
     return () => {};
   }, []);
 
   return (
     <Layout home={false}>
       <SEO
-        title="// INFORMATION"
+        title="LUZ MÍSTICA"
         description="Luz Mística is a color + light therapy application. Turn the lights off, increase the screen brightness, and bathe in color. Designed & Developed by Lucas Vocos"
       />
       <InfoWrapper>
