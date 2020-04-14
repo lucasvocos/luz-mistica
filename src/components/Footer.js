@@ -122,7 +122,7 @@ const Footer = ({ color }) => {
       ) : (
         <FullScreenButton>
           <Link to={"/information"}>
-            INSTALL <img src={Arrow} />
+            INSTALL <img src={Arrow} alt="arrow" />
           </Link>
         </FullScreenButton>
       )}

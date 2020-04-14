@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import Header from "./Header";
 import Footer from "./Footer";

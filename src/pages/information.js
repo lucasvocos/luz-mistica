@@ -101,8 +101,8 @@ const Information = () => {
             <Instructions>
               <h3>INSTALLATION INSTRUCTIONS:</h3>
               <p>
-                Tap the Share icon: <img src={ShareIcon} /> and click "Add to
-                Home Screen".
+                Tap the Share icon: <img src={ShareIcon} alt="share icon" /> and
+                click "Add to Home Screen".
               </p>
             </Instructions>
           )}
