@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SEO from "../components/seo";
 import "reset-css";
 import Layout from "../components/Layout";

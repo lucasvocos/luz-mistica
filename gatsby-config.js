@@ -22,10 +22,10 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `LUZ MÍSTICA`,
+        short_name: `LUZ MÍSTICA`,
         start_url: `/`,
-        background_color: `#663399`,
+        background_color: `hsl(300, 76%, 72%)`,
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/favicon/color-wheel.png` // This path is relative to the root of the site.
@@ -39,9 +39,12 @@ module.exports = {
         token: process.env.REACT_APP_SANITY_API_TOKEN
       }
     },
-    `gatsby-plugin-sass`
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-sass`,
+    {
+      resolve: `gatsby-plugin-offline`,
+      options: {
+        precachePages: [`/*`, `/information`]
+      }
+    }
   ]
 };
