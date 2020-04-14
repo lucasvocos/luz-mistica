@@ -27,8 +27,9 @@ module.exports = {
         start_url: `/`,
         background_color: `hsl(300, 76%, 72%)`,
         theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/favicon/color-wheel.png` // This path is relative to the root of the site.
+        display: `standalone`,
+        icon: `src/images/favicon/color-wheel.png`, // This path is relative to the root of the site.
+        theme_color_in_head: false
       }
     },
     {
@@ -40,11 +41,6 @@ module.exports = {
       }
     },
     `gatsby-plugin-sass`,
-    {
-      resolve: `gatsby-plugin-offline`,
-      options: {
-        precachePages: [`/`, `/information`]
-      }
-    }
+    `gatsby-plugin-offline`
   ]
 };
