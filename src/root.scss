@@ -11,17 +11,20 @@
 
 @font-face {
   font-family: "SuisseIntlRegular";
-  src: url("./font/SuisseIntl-Regular.eot");
-  src: url("./font/SuisseIntl-Regular.eot?#iefix") format("embedded-opentype"),
-    url("./font/SuisseIntl-Regular.woff2") format("woff2"),
-    url("./font/SuisseIntl-Regular.woff") format("woff"),
-    url("./font/SuisseIntl-Regular.svg#SuisseIntl-Regular") format("svg");
+  src: url("./font/SuisseIntl-Regular-WebM.eot");
+  src: url("./font/SuisseIntl-Regular-WebM.eot?#iefix")
+      format("embedded-opentype"),
+    url("./font/SuisseIntl-Regular-WebM.woff2") format("woff2"),
+    url("./font/SuisseIntl-Regular-WebM.woff") format("woff"),
+    url("./font/SuisseIntl-Regular-WebM.ttf") format("truetype"),
+    url("./font/SuisseIntl-Regular-WebM.svg#SuisseIntl-Regular-WebM")
+      format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
 html {
-  font-family: "SuisseIntlBook", "Helvetica Neue", Helvetica, sans-serif;
+  font-family: "SuisseIntlRegular", "Helvetica Neue", Helvetica, sans-serif;
   font-size: 13px;
 
   @media (min-width: 1600px) {

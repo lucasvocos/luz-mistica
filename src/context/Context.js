@@ -19,30 +19,52 @@ export class ColorContextProvider extends React.Component {
               _type: "span",
               marks: [],
               text:
-                "Violet stimulates Intuition, Imagination, Self-Knowledge, Meditation, Artistic Qualities"
-            }
+                "Violet stimulates Intuition, Imagination, Self-Knowledge, Meditation, Artistic Qualities",
+            },
           ],
           markDefs: [],
-          style: "normal"
-        }
-      ]
+          style: "normal",
+        },
+      ],
     },
-    interval: false
+    interval: false,
   };
 
   initSetState = (colors, currentColor) => {
     this.setState({ colors: colors, currentColor: currentColor });
   };
 
-  setColors = colors => {
+  setColors = (colors) => {
     this.setState({ colors });
   };
-  setCurrentColor = index => {
+  setCurrentColor = (index) => {
     this.setState({ currentColor: this.state.colors[index] });
   };
 
-  setInterval = bool => {
-    this.setState({ interval: bool });
+  setShuffle = (bool) => {
+    this.setState(
+      {
+        interval: bool,
+      },
+      () => {
+        console.log(bool);
+        const shuffleColors = () => {
+          console.log("running");
+          this.setState({
+            currentColor: this.state.colors[
+              this.state.colors.indexOf(this.state.currentColor) + 1 ===
+              this.state.colors.length
+                ? 0
+                : this.state.colors.indexOf(this.state.currentColor) + 1
+            ],
+          });
+        };
+        const shuffle = setInterval(shuffleColors, 2000);
+        const stopShuffle = () => {
+          clearInterval(shuffle);
+        };
+      }
+    );
   };
 
   render() {
@@ -53,7 +75,7 @@ export class ColorContextProvider extends React.Component {
       initSetState: this.initSetState,
       setColors: this.setColors,
       setCurrentColor: this.setCurrentColor,
-      setInterval: this.setInterval
+      setShuffle: this.setShuffle,
     };
 
     return (

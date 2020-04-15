@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import Context from "../context/Context";
 import BlockContent from "@sanity/block-content-to-react";
 import styled from "styled-components";
 import { Link } from "gatsby";
@@ -62,6 +63,8 @@ const Footer = ({ color }) => {
   const [fullScreen, setFullScreen] = useState(false);
   const [displayButton, setDisplayButton] = useState(false);
 
+  const context = useContext(Context);
+
   const enterFullScreen = () => {
     setFullScreen(true);
     const wrapper = document.getElementById("___gatsby");
@@ -93,7 +96,6 @@ const Footer = ({ color }) => {
     const iOS =
       !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
     iOS ? setDisplayButton(false) : setDisplayButton(true);
-    return () => {};
   }, []);
 
   return (
