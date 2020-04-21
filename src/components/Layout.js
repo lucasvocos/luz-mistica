@@ -78,7 +78,8 @@ const Wrapper = (props) => {
   };
 
   const colorInterval = () => {
-    setInterval(nextColor);
+    console.log("I ran");
+    nextColor();
   };
 
   useEffect(() => {
@@ -89,12 +90,12 @@ const Wrapper = (props) => {
       );
     }
 
-    if (context.interval) {
-      setInterval(nextColor, 5000);
+    if (context.interval === true) {
+      setInterval(colorInterval, 5000);
     } else {
       clearInterval(colorInterval);
     }
-  }, []);
+  }, [context]);
 
   return (
     <LayoutStyle color={context.currentColor.code} id={"color"}>

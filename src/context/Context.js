@@ -41,32 +41,6 @@ export class ColorContextProvider extends React.Component {
     this.setState({ currentColor: this.state.colors[index] });
   };
 
-  setShuffle = (bool) => {
-    this.setState(
-      {
-        interval: bool,
-      },
-      () => {
-        console.log(bool);
-        const shuffleColors = () => {
-          console.log("running");
-          this.setState({
-            currentColor: this.state.colors[
-              this.state.colors.indexOf(this.state.currentColor) + 1 ===
-              this.state.colors.length
-                ? 0
-                : this.state.colors.indexOf(this.state.currentColor) + 1
-            ],
-          });
-        };
-        const shuffle = setInterval(shuffleColors, 2000);
-        const stopShuffle = () => {
-          clearInterval(shuffle);
-        };
-      }
-    );
-  };
-
   render() {
     const value = {
       colors: this.state.colors,
@@ -75,7 +49,6 @@ export class ColorContextProvider extends React.Component {
       initSetState: this.initSetState,
       setColors: this.setColors,
       setCurrentColor: this.setCurrentColor,
-      setShuffle: this.setShuffle,
     };
 
     return (

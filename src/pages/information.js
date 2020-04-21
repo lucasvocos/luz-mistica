@@ -15,9 +15,8 @@ const InfoWrapper = styled.section`
 const InfoColumn = styled.aside`
   width: 100%;
   line-height: 1.25;
-  &:first-of-type {
-    padding-right: 20px;
-  }
+
+  padding-right: 20px;
 
   a {
     color: inherit;
@@ -31,11 +30,14 @@ const InfoColumn = styled.aside`
 
   ul {
     line-height: 1.25;
-    p {
-      text-transform: uppercase;
+
+    li {
+      max-width: 37ch;
+      margin-bottom: 0.5em;
     }
+
     a {
-      text-decoration: none;
+      text-decoration: underline;
       &:hover {
         text-decoration: underline;
       }
@@ -93,11 +95,11 @@ const Information = () => {
       <InfoWrapper>
         <InfoColumn>
           <h2>Luz Mística is a light + color therapy application.</h2>
-          {data.allSanitySiteSettings.nodes[0]._rawInformation && (
-            <BlockContent
-              blocks={data.allSanitySiteSettings.nodes[0]._rawInformation}
-            />
-          )}
+          <p>
+            Turn the lights off, increase your screen brightness, and bathe in
+            the comfort of color.
+          </p>
+
           {displayInstallation && (
             <Instructions>
               <h3>INSTALLATION INSTRUCTIONS:</h3>
@@ -109,44 +111,34 @@ const Information = () => {
           )}
         </InfoColumn>
         <InfoColumn>
-          <p>
-            Designed & Developed by{" "}
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.lucasvocos.com"
-            >
-              Lucas Vocos
-            </a>
-          </p>
           <ul>
-            <p>Contact</p>
+            <p>COLOPHON:</p>
             <li>
+              Designed & Developed by{" "}
               <a
                 target="_blank"
                 rel="noopener noreferrer"
-                href="mailto:info@lucasvocos.com"
+                href="https://www.lucasvocos.com"
               >
-                info@lucasvocos.com
+                Lucas Vocos
               </a>
             </li>
             <li>
+              Typface: Suisse International graciously donated by{" "}
               <a
                 target="_blank"
                 rel="noopener noreferrer"
-                href="https://www.github.com/lucasvocos"
+                href="http://swisstypefaces.com/"
               >
-                Github
+                Swiss Typefaces
               </a>
             </li>
             <li>
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://www.instagram.com/lucasvocos"
-              >
-                Instagram
-              </a>
+              {data.allSanitySiteSettings.nodes[0]._rawInformation && (
+                <BlockContent
+                  blocks={data.allSanitySiteSettings.nodes[0]._rawInformation}
+                />
+              )}
             </li>
           </ul>
         </InfoColumn>

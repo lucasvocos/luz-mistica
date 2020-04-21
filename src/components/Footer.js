@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
-import Context from "../context/Context";
+import React, { useState, useEffect } from "react";
 import BlockContent from "@sanity/block-content-to-react";
 import styled from "styled-components";
 import { Link } from "gatsby";
@@ -32,24 +31,29 @@ const FullScreenButton = styled.button`
   bottom: 0px;
   background-color: transparent;
   font-size: 1em;
-  border: 0;
-  padding: 0;
+  border: 1px solid black;
   text-transform: uppercase;
   font-family: "SuisseIntlRegular", "Helvetica Neue", Helvetica, sans-serif;
   cursor: pointer;
-  border-bottom: 1px solid transparent;
+  padding: 5px 15px;
+  border-radius: 50px;
 
-  &:hover {
-    /* text-decoration: underline; */
-    border-bottom: 1px solid;
+  &.off {
   }
+  &.on {
+    background: black;
+    color: white;
+  }
+
   &:focus {
     outline: 1px solid transparent;
   }
+
   a {
     color: inherit;
     text-decoration: none;
   }
+
   img {
     max-height: 1.5rem;
     height: 1.5rem;
@@ -62,8 +66,6 @@ const FullScreenButton = styled.button`
 const Footer = ({ color }) => {
   const [fullScreen, setFullScreen] = useState(false);
   const [displayButton, setDisplayButton] = useState(false);
-
-  const context = useContext(Context);
 
   const enterFullScreen = () => {
     setFullScreen(true);
@@ -110,14 +112,14 @@ const Footer = ({ color }) => {
       {displayButton ? (
         <React.Fragment>
           {fullScreen ? (
-            <FullScreenButton onClick={() => exitFullScreen()}>
+            <FullScreenButton className="on" onClick={() => exitFullScreen()}>
               {" "}
-              Exit Full Screen{" "}
+              Fullscreen On
             </FullScreenButton>
           ) : (
-            <FullScreenButton onClick={() => enterFullScreen()}>
+            <FullScreenButton className="off" onClick={() => enterFullScreen()}>
               {" "}
-              Enter Full Screen{" "}
+              Fullscreen Off
             </FullScreenButton>
           )}
         </React.Fragment>
