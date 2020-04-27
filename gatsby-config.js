@@ -40,6 +40,28 @@ module.exports = {
         token: process.env.REACT_APP_SANITY_API_TOKEN,
       },
     },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-130602321-3",
+
+        head: false,
+
+        anonymize: true,
+
+        respectDNT: true,
+
+        exclude: ["/preview/**", "/do-not-track/me/too/"],
+
+        pageTransitionDelay: 0,
+
+        defer: false,
+        // Any additional optional fields
+        sampleRate: 5,
+        siteSpeedSampleRate: 10,
+        cookieDomain: "luz-mistica.com",
+      },
+    },
     `gatsby-plugin-sass`,
     `gatsby-plugin-offline`,
   ],
