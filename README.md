@@ -12,5 +12,5 @@ Turn off the lights, turn up your screen brightness, and use your phone or compu
 ## Built With
 
 - [Gatsby](https://www.gatsbyjs.org/) - The web framework used for the frontend
-- [Sanity.io](https://www.sanity.io/) - React-based
+- [Sanity.io](https://www.sanity.io/) - React-based Headless CMS
 - [Love](https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/237/smiling-face-with-smiling-eyes_1f60a.png) - ❤️
